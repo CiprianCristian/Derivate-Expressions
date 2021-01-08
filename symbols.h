@@ -33,7 +33,7 @@ bool isUnaryOperator(string token)
 {
 	for (unsigned int i = 0; i < 6; i++)
 	{
-		if (unaryOperators[i] == "log")
+		if (unaryOperators[i] == "log" || unaryOperators[i] == "sqrt")
 		{
 			if (token.substr(0, unaryOperators[i].length()) == unaryOperators[i])
 				return 1;

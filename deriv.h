@@ -162,7 +162,7 @@ void deriveaza(ExpTree& arbi, ExpTree& arbd)
         arbd->left = arb4;
         arbd->right = arb1;
     }
-    else if (arbi->info == "sqrt")
+    else if (arbi->info.substr(0, 4) == "sqrt")
     {
         deriveaza(arbi->right, arb1);
         int coefR = stoi(arbi->coef);
@@ -186,7 +186,7 @@ void deriveaza(ExpTree& arbi, ExpTree& arbd)
         arbd->right = arb2;
         arbd->info = "/";
     }
-    else if (arbi->info == "log" && arbi->coef == "e")
+    else if (arbi->info.substr(0, 3) == "log" && arbi->coef == "e")
     {
         deriveaza(arbi->right, arb1);
 
@@ -194,7 +194,7 @@ void deriveaza(ExpTree& arbi, ExpTree& arbd)
         arbd->left = arb1;
         arbd->right = arbi->right;
     }
-    else if (arbi->info == "log")
+    else if (arbi->info.substr(0, 3) == "log")
     {
         deriveaza(arbi->right, arb1);
 

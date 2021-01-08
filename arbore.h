@@ -38,11 +38,25 @@ ExpTree createNode(string info)
 	}
 	temp->left = NULL;
 	temp->right = NULL;
-	temp->info = info;
+    temp->info = info;
 
-	if (info.length() > 3)
-		temp->coef = info.substr(3, info.length() - 3);
-	else temp->coef = "2";
+	if (info.substr(0, 3) == "log")
+    {
+		if (info.length() > 3)
+			temp->coef = info.substr(3, info.length() - 3);
+		else
+			temp->coef = "2";
+    }
+	else if (info.substr(0, 4) == "sqrt")
+    {
+        if (info.length() > 4)
+			temp->coef = info.substr(4, info.length() - 4);
+		else
+			temp->coef = "2";
+    }
+	else
+		temp->coef = "0";
+
 	return temp;
 };
 ExpTree constructTree(ExpTree tree, vector<string> postfix)
