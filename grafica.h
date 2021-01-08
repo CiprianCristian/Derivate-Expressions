@@ -94,7 +94,7 @@ void meniuDeriv()
     unsigned int success;
     string expresie = functieCitita;
 
-    tokenStream infix;
+    tokenVector infix;
 	tokenize(infix, expresie, success);
 
 	if (!success)
@@ -105,7 +105,7 @@ void meniuDeriv()
             return ;
         }
 
-    tokenStream postfix;
+    tokenVector postfix;
 	postfixize(infix, postfix);
 
 	ExpTree tree = NULL;
