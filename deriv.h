@@ -320,7 +320,7 @@ void afiseaza(ExpTree& arb , string &functie)
 }
 void simplifica(ExpTree& arb)
 {
-    if (arb->info == "sin" || arb->info == "cos" || arb->info == "tg" || arb->info == "ctg" || arb->info == "sqrt" || arb->info == "log")
+    if (isUnaryOperator(arb->info))
     {
         simplifica(arb->right);
         return;
@@ -432,7 +432,7 @@ void simplifica(ExpTree& arb)
 }
 void simplifica2(ExpTree& arb)
 {
-    if (arb->info == "sin" || arb->info == "cos" || arb->info == "tg" || arb->info == "ctg" || arb->info == "sqrt" || arb->info == "log")
+    if (isUnaryOperator(arb->info))
     {
         simplifica2(arb->right);
         return;
