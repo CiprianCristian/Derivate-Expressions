@@ -4,7 +4,9 @@
 #include "libraries.h"
 #endif
 
+#include "expression.h"
 #include "arbore.h"
+#include "deriv.h"
 
 void meniu();
 void meniuInformatii();
@@ -71,13 +73,11 @@ void meniuInformatii()
     outtextxy( 480 , 170 , "Programul va efectua derivata de ordinul I si de ordinul al II - lea de o singura variabila care va fi x.");
     outtextxy( 480 , 200 , "Orice functie care nu va fi dependenta de x va fi considerata ca si o constanta.");
     outtextxy( 480 , 250 , "Se vor utiliza functii care contin:");
-    outtextxy( 480 , 280 , "        Operatori unari: + - * / ^ ");
-    outtextxy( 480 , 310 , "        Operatori binari: sin() cos() tg() ctg() sqrt() log() ");
-    outtextxy( 480 , 360 , "Pentru o functionare corecta a programului introduceti corect parametrii");
-    outtextxy( 480 , 390 , "Pentru a deriva ''radical de ordin n din x'' se va scrie  sqrtn(x)");
-    outtextxy( 480 , 420 , "Pentru a deriva ''logaritm in baza n din x'' se va scrie  logn(x)");
-    outtextxy( 480 , 450 , "In cazul in care nu se va mentiona nicio baza / ordin se va pune automat baza / ordinul 2");
-    outtextxy( 480 , 500 , "Va rugam sa respectati punerea corecta a parantezelor!");
+    outtextxy( 480 , 280 , "        Operatori binari: + - * / ^ ");
+    outtextxy( 480 , 310 , "        Operatori unari: sin() cos() tg() ctg() sqrt() log() ");
+    outtextxy( 480 , 370 , "Pentru a deriva ''radical de ordin n din x'' se va scrie  sqrtn(x)");
+    outtextxy( 480 , 400 , "Pentru a deriva ''logaritm in baza n din x'' se va scrie  logn(x)");
+    outtextxy( 480 , 430 , "In cazul in care nu se va mentiona nicio baza / ordin se va pune automat baza / ordinul 2");
 }
 
 void meniuDeriv()

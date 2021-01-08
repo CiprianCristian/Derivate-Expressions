@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <stack>
-#include <stdlib.h>
 #include <string>
 #include <string.h>
 #include <vector>

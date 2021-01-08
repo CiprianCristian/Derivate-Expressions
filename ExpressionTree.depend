@@ -28,17 +28,12 @@
 	"libraries.h"
 	"arbore.h"
 
-1610105143 source:c:\users\cipriandistrugatorul\documents\github\derivate-expressions\main.cpp
-	"libraries.h"
-	"expression.h"
-	"arbore.h"
-	"deriv.h"
+1610127257 source:c:\users\cipriandistrugatorul\documents\github\derivate-expressions\main.cpp
 	"grafica.h"
 
-1610105143 c:\users\cipriandistrugatorul\documents\github\derivate-expressions\libraries.h
+1610127377 c:\users\cipriandistrugatorul\documents\github\derivate-expressions\libraries.h
 	<iostream>
 	<stack>
-	<stdlib.h>
 	<string>
 	<string.h>
 	<vector>
@@ -57,11 +52,13 @@
 	"libraries.h"
 	"symbols.h"
 
-1610111222 c:\users\cipriandistrugatorul\documents\github\derivate-expressions\deriv.h
+1610125990 c:\users\cipriandistrugatorul\documents\github\derivate-expressions\deriv.h
 	"libraries.h"
 	"arbore.h"
 
-1610115900 c:\users\cipriandistrugatorul\documents\github\derivate-expressions\grafica.h
+1610129127 c:\users\cipriandistrugatorul\documents\github\derivate-expressions\grafica.h
 	"libraries.h"
+	"expression.h"
 	"arbore.h"
+	"deriv.h"
 
