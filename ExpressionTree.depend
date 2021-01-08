@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1610103401 source:c:\users\cipriandistrugatorul\documents\c++\expressiontree\main.cpp
+	"libraries.h"
+	"expression.h"
+	"arbore.h"
+	"deriv.h"
+
+1610009406 c:\users\cipriandistrugatorul\documents\c++\expressiontree\libraries.h
+	<iostream>
+	<stack>
+	<stdlib.h>
+	<string>
+	<string.h>
+	<vector>
+
+1610022330 c:\users\cipriandistrugatorul\documents\c++\expressiontree\expression.h
+	"libraries.h"
+	"symbols.h"
+
+1610022342 c:\users\cipriandistrugatorul\documents\c++\expressiontree\symbols.h
+	"libraries.h"
+
+1610103724 c:\users\cipriandistrugatorul\documents\c++\expressiontree\arbore.h
+	"libraries.h"
+	"symbols.h"
+
+1610019430 c:\users\cipriandistrugatorul\documents\c++\expressiontree\deriv.h
+	"libraries.h"
+	"arbore.h"
+
