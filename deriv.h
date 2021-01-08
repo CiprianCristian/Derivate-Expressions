@@ -67,8 +67,8 @@ void deriveaza(ExpTree& arbi, ExpTree& arbd)
         arb2->left = arbi->left;
         arb2->right = arb4;
         arb5->info = "-";
-        arb5->left = arb2;
-        arb5->right = arb1;
+        arb5->left = arb1;
+        arb5->right = arb2;
         arb6->info = "2";
         arb6->left = NULL;
         arb6->right = NULL;
