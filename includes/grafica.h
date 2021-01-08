@@ -17,10 +17,10 @@ void citireFunctie(char functieCitita[100]);
 void meniu()
 {
     initwindow( 1500 , 770, "Deriv" );
-    readimagefile("Background.jpg", 0,0,1500,770);
-    readimagefile("galben.jpg", 400, 100, 1400, 700);
-    readimagefile("InfButton.jpg",75,200,275,260);
-    readimagefile("DerivButton.jpg",75,380,275,440);
+    readimagefile("images/Background.jpg", 0,0,1500,770);
+    readimagefile("images/galben.jpg", 400, 100, 1400, 700);
+    readimagefile("images/InfButton.jpg",75,200,275,260);
+    readimagefile("images/DerivButton.jpg",75,380,275,440);
 
     jump:
     bool gata = false;
@@ -64,7 +64,7 @@ void meniu()
 
 void meniuInformatii()
 {
-    readimagefile("galben.jpg", 400, 100, 1400, 700);
+    readimagefile("images/galben.jpg", 400, 100, 1400, 700);
     setbkcolor(YELLOW);
     setcolor(BLACK);
     settextstyle(8, HORIZ_DIR, 4);
@@ -82,7 +82,7 @@ void meniuInformatii()
 
 void meniuDeriv()
 {
-    readimagefile("galben.jpg", 400, 100, 1400, 700);
+    readimagefile("images/galben.jpg", 400, 100, 1400, 700);
     setbkcolor(YELLOW);
     setcolor(BLACK);
     settextstyle(8, HORIZ_DIR, 4);

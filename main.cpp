@@ -1,4 +1,4 @@
-#include "grafica.h"
+#include "includes/grafica.h"
 
 int main()
 {
