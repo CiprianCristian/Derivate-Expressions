@@ -29,7 +29,6 @@ bool isNumber(char ch)
 		return 1;
 	return 0;
 }
-
 bool isUnaryOperator(string token)
 {
 	for (unsigned int i = 0; i < 6; i++)

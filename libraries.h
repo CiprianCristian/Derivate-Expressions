@@ -8,5 +8,8 @@
 #include <string>
 #include <string.h>
 #include <vector>
+#include <graphics.h>
+#include <winbgim.h>
+#include <cstring>
 
 using namespace std;

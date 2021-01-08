@@ -20,7 +20,6 @@ void lowerCase(string& s)
 		if (isLetter(s[i]) == 2)
 			s[i] += 32;
 }
-
 void tokenize(tokenStream& infix, string s, unsigned int& success)
 {
 	infix.clear();
@@ -69,7 +68,6 @@ void detokenize(tokenStream infix, string& s)
 	for (auto token : infix)
 		s += token;
 }
-
 int getPriority(string token)
 {
 	if (isUnaryOperator(token)) return 4;

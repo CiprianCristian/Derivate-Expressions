@@ -215,30 +215,70 @@ void deriveaza(ExpTree& arbi, ExpTree& arbd)
         arbd->right = NULL;
     }
 }
-void afiseaza(ExpTree& arb)
+void afiseaza(ExpTree& arb , string &functie)
 {
     if (arb == NULL)
         return;
 
     if (arb->info == "sin" || arb->info == "cos" || arb->info == "tg" || arb->info == "ctg")
     {
-        cout << arb->info << '(';
-        afiseaza(arb->right);
-        cout << ')';
+        functie = functie + arb->info + "(";
+        afiseaza(arb->right , functie );
+        functie = functie + ")" ;
     }
     else if (arb->info == "log")
     {
-        cout << arb->info << arb->coef << '(';;
-        afiseaza(arb->right);
-        cout << ')';
+        functie = functie + arb->info + arb->coef + "(";
+        afiseaza(arb->right , functie );
+        functie = functie + ")";
     }
     else if (arb->info == "sqrt")
     {
-        cout << arb->info << arb->coef << '(';;
-        afiseaza(arb->right);
-        cout << ')';
+        functie = functie + arb->info + arb->coef + "(";
+        afiseaza(arb->right , functie );
+        functie = functie + ")";
     }
-    else if (arb->info == "-" || arb->info == "*" || arb->info == "/" || arb->info == "^")
+    else if( arb->info == "-")
+    {
+        ExpTree fiuStang, fiuDrept;
+        fiuStang = new TreeNode;
+        fiuDrept = new TreeNode;
+        fiuStang = arb->left;
+        fiuDrept = arb->right;
+        int ok = 0;
+
+        if( fiuStang == NULL)
+        {
+            functie = functie + "(" + arb->info ;
+            ok = 1;
+        }
+        else if (fiuStang != NULL)
+        {
+            if (fiuStang->left == NULL && fiuStang->right == NULL)
+                afiseaza(fiuStang , functie );
+            else
+            {
+                functie = functie + "(";
+                afiseaza(arb->left , functie );
+                functie = functie + ")";
+                functie = functie + arb->info;
+            }
+        }
+
+        if (fiuDrept != NULL)
+        {
+            if (fiuDrept->left == NULL && fiuDrept->right == NULL)
+                afiseaza(arb->right , functie );
+            else
+            {
+                functie = functie + "(";
+                afiseaza(arb->right , functie );
+                functie = functie + ")";
+            }
+        }
+        if( ok == 1 ) functie = functie + ")";
+    }
+    else if( arb->info == "*" || arb->info == "/" || arb->info == "^")
     {
         ExpTree fiuStang, fiuDrept;
         fiuStang = new TreeNode;
@@ -248,34 +288,34 @@ void afiseaza(ExpTree& arb)
 
         if (fiuStang != NULL)
         {
-            if ((fiuStang->left == NULL && fiuStang->right == NULL) || fiuStang->info == "sin" || fiuStang->info == "cos" || fiuStang->info == "tg" || fiuStang->info == "ctg")
-                afiseaza(fiuStang);
+            if (fiuStang->left == NULL && fiuStang->right == NULL)
+                afiseaza(fiuStang , functie );
             else
             {
-                cout << '(';
-                afiseaza(arb->left);
-                cout << ')';
+                functie = functie + "(";
+                afiseaza(arb->left , functie );
+                functie = functie + ")";
             }
         }
-        cout << arb->info;
+        functie = functie + arb->info;
 
         if (fiuDrept != NULL)
         {
-            if ((fiuDrept->left == NULL && fiuDrept->right == NULL) || fiuDrept->info == "sin" || fiuDrept->info == "cos" || fiuDrept->info == "tg" || fiuDrept->info == "ctg")
-                afiseaza(arb->right);
+            if (fiuDrept->left == NULL && fiuDrept->right == NULL)
+                afiseaza(arb->right , functie );
             else
             {
-                cout << '(';
-                afiseaza(arb->right);
-                cout << ')';
+                functie = functie + "(";
+                afiseaza(arb->right , functie );
+                functie = functie + ")";
             }
         }
     }
     else
     {
-        afiseaza(arb->left);
-        cout << arb->info;
-        afiseaza(arb->right);
+        afiseaza(arb->left , functie );
+        functie = functie + arb->info;
+        afiseaza(arb->right , functie );
     }
 }
 void simplifica(ExpTree& arb)
@@ -291,6 +331,128 @@ void simplifica(ExpTree& arb)
 
     simplifica(arb->left);
     simplifica(arb->right);
+
+    ExpTree arbST, arbDR;
+    arbST = new TreeNode;
+    arbDR = new TreeNode;
+    arbST = arb->left;
+    arbDR = arb->right;
+
+    if (arbST->info[0] >= '0' && arbST->info[0] <= '9' && arbDR->info[0] >= '0' && arbDR->info[0] <= '9')
+    {
+        int numarST, numarDR, numarNOU;
+        numarST = stoi(arbST->info);
+        numarDR = stoi(arbDR->info);
+
+        if (arb->info == "+")
+        {
+            numarNOU = numarST + numarDR;
+            arb->info = to_string(numarNOU);
+            arb->left = NULL;
+            arb->right = NULL;
+        }
+        else if (arb->info == "-")
+        {
+            numarNOU = numarST - numarDR;
+            arb->info = to_string(numarNOU);
+            arb->left = NULL;
+            arb->right = NULL;
+        }
+        else if (arb->info == "*")
+        {
+            numarNOU = numarST * numarDR;
+            arb->info = to_string(numarNOU);
+            arb->left = NULL;
+            arb->right = NULL;
+        }
+        else if (arb->info == "/")
+        {
+            numarNOU = numarST / numarDR;
+            arb->info = to_string(numarNOU);
+            arb->left = NULL;
+            arb->right = NULL;
+        }
+    }
+    else if (arb->info == "+")
+    {
+        if (arbST->info == "0")
+            arb = arbDR;
+        else if (arbDR->info[0] == '0')
+            arb = arbST;
+    }
+    else if (arb->info == "-")
+    {
+        if (arbST->info == "0")
+            arb->left = NULL;
+
+        if (arbDR->info == "0")
+            arb = arbST;
+    }
+    else if (arb->info == "*")
+    {
+        if (arbST->info == "0" || arbDR->info == "0")
+        {
+            arb->info = "0";
+            arb->left = NULL;
+            arb->right = NULL;
+        }
+        else if (arbST->info == "1")
+            arb = arbDR;
+        else if (arbDR->info == "1")
+            arb = arbST;
+    }
+    else if (arb->info == "/")
+    {
+        if (arbST->info == "0")
+        {
+            arb->info = "0";
+            arb->left = NULL;
+            arb->right = NULL;
+        }
+        else if (arbDR->info == "1")
+            arb = arbST;
+    }
+    else if (arb->info == "^")
+    {
+        if (arbDR->info == "1")
+            arb = arbST;
+        else if (arbST->info == "1" || arbDR->info == "0")
+        {
+            arb->left = NULL;
+            arb->right = NULL;
+            arb->info = "1";
+        }
+        else if (arbST->info == "0")
+        {
+            arb->left = NULL;
+            arb->right = NULL;
+            arb->info = "0";
+        }
+    }
+}
+void simplifica2(ExpTree& arb)
+{
+    if (arb->info == "sin" || arb->info == "cos" || arb->info == "tg" || arb->info == "ctg" || arb->info == "sqrt" || arb->info == "log")
+    {
+        simplifica2(arb->right);
+        return;
+    }
+
+    if(arb->left == NULL && arb->right == NULL )
+            return;
+    else if(arb->left == NULL && arb->right !=NULL )
+    {
+        simplifica2(arb->right);
+        return;
+    }
+    else if(arb->right == NULL && arb->left !=NULL )
+    {
+        simplifica2(arb->left);
+        return;
+    }
+
+    simplifica2(arb->left);
+    simplifica2(arb->right);
 
     ExpTree arbST, arbDR;
     arbST = new TreeNode;
