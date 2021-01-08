@@ -6,9 +6,9 @@
 
 #include "symbols.h"
 
-typedef vector<string> tokenStream;
+typedef vector<string> tokenVector;
 
-void printTokens(tokenStream tokens)
+void printTokens(tokenVector tokens)
 {
 	for (auto token : tokens)
 		cout << token << " ";
@@ -20,7 +20,7 @@ void lowerCase(string& s)
 		if (isLetter(s[i]) == 2)
 			s[i] += 32;
 }
-void tokenize(tokenStream& infix, string s, unsigned int& success)
+void tokenize(tokenVector& infix, string s, unsigned int& success)
 {
 	infix.clear();
 	lowerCase(s);
@@ -62,7 +62,7 @@ void tokenize(tokenStream& infix, string s, unsigned int& success)
 		if (isBinaryOperator(infix[i - 1]) && isBinaryOperator(infix[i]))
 			success = 0;
 }
-void detokenize(tokenStream infix, string& s)
+void detokenize(tokenVector infix, string& s)
 {
 	s.clear();
 	for (auto token : infix)
@@ -76,7 +76,7 @@ int getPriority(string token)
 	if (token == "+" || token == "-") return 1;
 	return 0;
 }
-void postfixize(tokenStream infix, tokenStream& postfix)
+void postfixize(tokenVector infix, tokenVector& postfix)
 {
 	stack<string> st;
 	for (auto token : infix)
